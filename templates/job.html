@@ -3,182 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>目標企業深度診斷 - 叡揚資訊 GSS</title>
+    <title>目標企業深度分析 - 叡揚資訊 GSS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* 視覺設計：純淨大樓背景 + 高質感毛玻璃 */
         body {
-            background-color: #0f172a; 
-            /* 移除網格，純粹使用照片作為背景 */
-            background-image: 
-                linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.4)), 
-                url('gss_building.png'); 
-            
-            background-size: cover; 
-            background-position: center; 
-            background-attachment: fixed; 
-            
+            /* 主要背景：建築物圖 */
+            background-image: linear-gradient(rgba(241, 245, 249, 0.9), rgba(241, 245, 249, 0.9)), 
+                              url('static/gss_building.png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             font-family: "Microsoft JhengHei", sans-serif;
-            color: #ffffff !important;
+            padding-top: 100px;
+            color: #334155 !important;
+            font-size: 1.1rem;
+            position: relative; /* 為浮水印定位 */
             min-height: 100vh;
-            line-height: 1.8;
-            margin: 0;
         }
 
-        /* 強制全局文字白色，避免被預設樣式影響 */
-        p, span, li, h1, h2, h3, h4, h5, div {
-            color: #ffffff !important;
+        /* --- 浮水印照片設定 --- */
+        body::after {
+            content: "";
+            background-image: url('static/gss_building.png'); /* 你的第二張圖片檔案名稱 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right bottom; /* 放在右下角 */
+            opacity: 0.12; /* 設定透明度，數值越小越透明 */
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            z-index: -1; /* 確保在文字下方 */
+            pointer-events: none; /* 確保不影響滑鼠點擊 */
         }
 
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.65); /* 降低卡片濃度，讓背景透出來 */
-            backdrop-filter: blur(20px); /* 增加模糊度，更有質感 */
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 40px;
+        .navbar-custom { background-color: #212529; padding: 15px 25px; }
+        .navbar-custom .navbar-brand { color: #ffffff !important; font-weight: bold; font-size: 1.4rem; }
+        .navbar-custom .nav-link { color: #d1d5db !important; margin-left: 20px; font-size: 1.05rem; }
+
+        .main-container {
+            background: rgba(255, 255, 255, 0.96); /* 稍微調降透明度讓背景透出來一點 */
+            border-radius: 30px;
             padding: 50px;
-            margin: 60px auto;
-            max-width: 1100px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            max-width: 1400px;
+            margin: 0 auto 80px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
         }
 
-        /* 標題區塊 */
-        .company-header {
-            border-bottom: 2px solid #38bdf8;
-            padding-bottom: 30px;
-            margin-bottom: 45px;
-        }
-
-        .company-logo {
-            font-size: 3.2rem;
-            font-weight: 900;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-            letter-spacing: 3px;
-        }
-
-        .job-title-tag {
-            background: linear-gradient(135deg, #38bdf8, #2563eb);
-            padding: 12px 35px;
-            border-radius: 50px;
-            font-size: 1.25rem;
+        .hero-banner-img { max-width: 450px; height: auto; margin-bottom: 25px; }
+        
+        .job-badge-container {
+            background-color: #38bdf8;
+            color: #fff !important;
+            padding: 15px;
+            border-radius: 60px;
             font-weight: bold;
-            display: inline-block;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            font-size: 1.3rem;
+            margin: 0 auto 30px;
+            max-width: 850px;
+            letter-spacing: 1px;
         }
 
-        /* 內容卡片 */
+        .job-description-box {
+            background-color: #f1f5f9;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 45px;
+            border: 1px dashed #cbd5e1;
+            display: inline-block;
+            text-align: left;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .job-description-box h6 { 
+            color: #0369a1; 
+            font-weight: bold; 
+            font-size: 1.25rem; 
+            margin-bottom: 20px; 
+            border-bottom: 2px solid #cbd5e1; 
+            padding-bottom: 12px; 
+        }
+        .job-description-box li { 
+            margin-bottom: 12px; 
+            line-height: 1.8; 
+            font-size: 1.1rem;
+            position: relative; 
+            padding-left: 30px; 
+        }
+        .job-description-box li::before { content: "▹"; position: absolute; left: 0; color: #38bdf8; font-weight: bold; }
+
         .info-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 25px;
+            background: #f8fafc;
+            border-radius: 24px;
             padding: 30px;
             height: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
+            border: 1px solid #e2e8f0;
         }
-
-        .info-card:hover {
-            background: rgba(56, 189, 248, 0.1);
-            border-color: #38bdf8;
-            transform: scale(1.02);
-        }
-
-        .highlight-text {
-            color: #7dd3fc !important;
+        .section-title {
+            color: #0284c7 !important;
+            border-left: 6px solid #38bdf8;
+            padding-left: 15px;
+            margin-bottom: 20px;
             font-weight: bold;
+            font-size: 1.25rem;
         }
 
-        .list-unstyled li {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
+        p, li { line-height: 1.8; }
+
+        .award-list { font-size: 1rem; padding-left: 0; list-style: none; }
+        .award-list li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .award-list li::before { content: "🏆"; position: absolute; left: 0; }
+
+        .req-label { 
+            font-weight: bold; 
+            color: #0369a1; 
+            display: block; 
+            margin-top: 15px; 
+            font-size: 1.1rem;
         }
 
-        .list-unstyled li::before {
-            content: "✦";
-            position: absolute;
-            left: 0;
-            color: #38bdf8;
+        .btn-visit {
+            background-color: #0f172a; color: #fff !important; border-radius: 50px;
+            padding: 16px 45px; text-decoration: none; font-weight: bold; 
+            font-size: 1.1rem; transition: 0.3s;
         }
-
-        /* 按鈕風格 */
-        .btn-custom {
-            border-radius: 50px;
-            padding: 15px 45px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-gss {
-            background: #ffffff;
-            color: #0f172a !important;
-            box-shadow: 0 5px 20px rgba(255,255,255,0.2);
-        }
-
-        .btn-gss:hover {
-            background: #38bdf8;
-            color: #ffffff !important;
-        }
-
-        .btn-back {
-            border: 2px solid #38bdf8;
-            color: #38bdf8 !important;
-            margin-top: 20px;
-        }
+        .btn-visit:hover { background-color: #38bdf8; transform: translateY(-2px); }
     </style>
 </head>
 <body>
 
-<div class="container pb-5">
-    <div class="glass-panel">
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">YingZhi 個人網站</a>
+        <div class="ms-auto d-flex">
+            <a class="nav-link" href="https://www.pu.edu.tw/" target="_blank">靜宜大學</a>
+            <a class="nav-link" href="https://csim.pu.edu.tw/" target="_blank">靜宜大學資管系</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="main-container text-center">
         
-        <div class="company-header text-center">
-            <h1 class="company-logo mb-2">GSS 叡揚資訊</h1>
-            <div class="job-title-tag mb-4">目標職位：系統分析師 / 專案經理 PM</div>
-            <p class="fs-5 opacity-90">引領企業 e化、數位轉型與資安治理的領導者</p>
-            <a href="https://www.gss.com.tw/" target="_blank" class="btn-custom btn-gss mt-3">👉 參觀官網</a>
+        <div class="mb-5">
+            <img src="static/messageImage_1776249466899.jpg" alt="GSS Logo" class="hero-banner-img">
+            <h1 class="fw-bold" style="font-size: 2.5rem;">GSS 叡揚資訊</h1>
         </div>
 
-        <div class="row g-4 mb-5">
-            <div class="col-md-6">
+        <div class="job-badge-container">
+            目標職位：系統分析師 / 專案助理 Analyst
+        </div>
+
+        <div class="job-description-box">
+            <h6>📝 職務具體工作內容</h6>
+            <ul>
+                <li>進行客戶需求訪談，分析業務流程痛點。</li>
+                <li>撰寫系統需求規格書與技術指南文件。</li>
+                <li>負責專案進度管理與跨部門技術溝通。</li>
+                <li>整合規劃及擬定產品相關文件。</li>
+                <li>發想企劃及製作提案文件，向主管及客戶進行提案報告。</li>
+                <li>與工程師、設計師等其他團隊成員配合，協助執行及完成專案。</li>
+            </ul>
+        </div>
+
+        <div class="row g-4 text-start">
+            <div class="col-lg-4">
                 <div class="info-card">
-                    <h4 class="highlight-text mb-4"># 關於叡揚資訊</h4>
-                    <p>叡揚資訊是台灣本土軟體業的指標公司，專精於 <span class="highlight-text">公文系統</span>、<span class="highlight-text">人力資源管理 (HRM)</span>、<span class="highlight-text">CRM</span> 及最新的 <span class="highlight-text">資安與雲端治理</span> 方案。</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="info-card">
-                    <h4 class="highlight-text mb-4"># 職務與要求</h4>
+                    <h5 class="section-title">🏢 企業基本介紹</h5>
+                    <p>叡揚資訊 (GSS) 成立於 1987 年，是台灣本土軟體業領導廠商。服務涵蓋政府、金融及大型醫療體系。</p>
+                    
+                    <h5 class="section-title mt-4">🛠️ 核心業務與服務</h5>
                     <ul class="list-unstyled">
-                        <li>協助企業進行需求訪談與流程數位化。</li>
-                        <li>負責系統架構設計與規格文件撰寫。</li>
-                        <li>需具備良好的邏輯思考與跨團隊溝通力。</li>
+                        <li class="mb-3">● <strong>企業 e 化：</strong> HCM、公文系統、Vital CRM。</li>
+                        <li class="mb-3">● <strong>雲端 SaaS：</strong> Vital 家族與 Vital NetZero 零碳雲。</li>
+                        <li class="mb-3">● <strong>AI 應用：</strong> iota C.ai 對話式平台與智慧助理。</li>
+                        <li>● <strong>資安維運：</strong> DevSecOps 整合工具與資安治理。</li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="info-card" style="background-color: #fffaf0;">
+                    <h5 class="section-title">🏅 卓越成就與獲獎</h5>
+                    <ul class="award-list">
+                        <li>Checkmarx FY25 Best Overall Performing Reseller</li>
+                        <li>2026 CIO Taiwan Elite Vendor</li>
+                        <li>2025 天下永續公民獎（小巨人組）</li>
+                        <li>2024 全球頂尖敏捷 CEO 大獎</li>
+                        <li>2024 金恆獎銀獎</li>
+                        <li>第 32 屆台灣精品獎（知識協作平台）</li>
+                        <li>第 31 屆台灣精品獎（Vital CRM）</li>
+                        <li>第 24 屆國家品質獎</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="info-card">
+                    <h5 class="section-title">📋 公司職位要求</h5>
+                    <div>
+                        <span class="req-label">工作經歷：</span> 不拘，具專案開發經驗佳
+                        <span class="req-label">學歷/科系：</span> 大學以上，資訊管理相關學系
+                        <span class="req-label">擅長工具：</span> Python, Java 或 C#, SQL 資料庫
+                        <span class="req-label">語文條件：</span> 具備基本技術文件閱讀能力
+                        <span class="req-label">工作技能：</span> 需求訪談、流程分析、文件撰寫
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row g-4">
-            <div class="col-md-5">
-                <div class="p-4 rounded-4" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4);">
-                    <h4 class="mb-4 text-center">👨‍💻 個人短評：周英智</h4>
-                    <ul class="list-unstyled mb-0">
-                        <li><strong>專業背景：</strong> 靜宜大學 MIS 資訊管理</li>
-                        <li><strong>核心技能：</strong> Python、C、資料庫分析</li>
-                        <li><strong>特質組合：</strong> S (社會) · C (事務) · E (企業)</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-7">
-                <div class="info-card" style="background: rgba(255, 255, 255, 0.02);">
-                    <h4 class="highlight-text mb-3"># 為什麼我適合這個職位？</h4>
-                    <p>我具備 **C 型** 性格的嚴謹，能精確處理 MIS 領域的行政與數據流程。同時，我的 **S 型** 特質讓我在需求訪談中具備同理心，能準確轉譯客戶需求，並運用 **E 型** 的說服力推動專案成功。</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center mt-5 pt-3">
-            <a href="/" class="btn-custom btn-back">← 返回首頁入口</a>
+        <div class="mt-5">
+            <a href="https://www.gss.com.tw/" target="_blank" class="btn-visit">參觀叡揚資訊官方網站</a>
         </div>
 
     </div>
