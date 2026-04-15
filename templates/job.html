@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目標企業深度診斷 - 叡揚資訊 GSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 視覺設計：純淨大樓背景 + 高質感毛玻璃 */
+        body {
+            background-color: #0f172a; 
+            /* 移除網格，純粹使用照片作為背景 */
+            background-image: 
+                linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.4)), 
+                url('gss_building.png'); 
+            
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
+            
+            font-family: "Microsoft JhengHei", sans-serif;
+            color: #ffffff !important;
+            min-height: 100vh;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* 強制全局文字白色，避免被預設樣式影響 */
+        p, span, li, h1, h2, h3, h4, h5, div {
+            color: #ffffff !important;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.65); /* 降低卡片濃度，讓背景透出來 */
+            backdrop-filter: blur(20px); /* 增加模糊度，更有質感 */
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 40px;
+            padding: 50px;
+            margin: 60px auto;
+            max-width: 1100px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        /* 標題區塊 */
+        .company-header {
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 30px;
+            margin-bottom: 45px;
+        }
+
+        .company-logo {
+            font-size: 3.2rem;
+            font-weight: 900;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            letter-spacing: 3px;
+        }
+
+        .job-title-tag {
+            background: linear-gradient(135deg, #38bdf8, #2563eb);
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        /* 內容卡片 */
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            padding: 30px;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .info-card:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: #38bdf8;
+            transform: scale(1.02);
+        }
+
+        .highlight-text {
+            color: #7dd3fc !important;
+            font-weight: bold;
+        }
+
+        .list-unstyled li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .list-unstyled li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #38bdf8;
+        }
+
+        /* 按鈕風格 */
+        .btn-custom {
+            border-radius: 50px;
+            padding: 15px 45px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-gss {
+            background: #ffffff;
+            color: #0f172a !important;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.2);
+        }
+
+        .btn-gss:hover {
+            background: #38bdf8;
+            color: #ffffff !important;
+        }
+
+        .btn-back {
+            border: 2px solid #38bdf8;
+            color: #38bdf8 !important;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container pb-5">
+    <div class="glass-panel">
+        
+        <div class="company-header text-center">
+            <h1 class="company-logo mb-2">GSS 叡揚資訊</h1>
+            <div class="job-title-tag mb-4">目標職位：系統分析師 / 專案經理 PM</div>
+            <p class="fs-5 opacity-90">引領企業 e化、數位轉型與資安治理的領導者</p>
+            <a href="https://www.gss.com.tw/" target="_blank" class="btn-custom btn-gss mt-3">👉 參觀官網</a>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="info-card">
+                    <h4 class="highlight-text mb-4"># 關於叡揚資訊</h4>
+                    <p>叡揚資訊是台灣本土軟體業的指標公司，專精於 <span class="highlight-text">公文系統</span>、<span class="highlight-text">人力資源管理 (HRM)</span>、<span class="highlight-text">CRM</span> 及最新的 <span class="highlight-text">資安與雲端治理</span> 方案。</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-card">
+                    <h4 class="highlight-text mb-4"># 職務與要求</h4>
+                    <ul class="list-unstyled">
+                        <li>協助企業進行需求訪談與流程數位化。</li>
+                        <li>負責系統架構設計與規格文件撰寫。</li>
+                        <li>需具備良好的邏輯思考與跨團隊溝通力。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-5">
+                <div class="p-4 rounded-4" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4);">
+                    <h4 class="mb-4 text-center">👨‍💻 個人短評：周英智</h4>
+                    <ul class="list-unstyled mb-0">
+                        <li><strong>專業背景：</strong> 靜宜大學 MIS 資訊管理</li>
+                        <li><strong>核心技能：</strong> Python、C、資料庫分析</li>
+                        <li><strong>特質組合：</strong> S (社會) · C (事務) · E (企業)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="info-card" style="background: rgba(255, 255, 255, 0.02);">
+                    <h4 class="highlight-text mb-3"># 為什麼我適合這個職位？</h4>
+                    <p>我具備 **C 型** 性格的嚴謹，能精確處理 MIS 領域的行政與數據流程。同時，我的 **S 型** 特質讓我在需求訪談中具備同理心，能準確轉譯客戶需求，並運用 **E 型** 的說服力推動專案成功。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5 pt-3">
+            <a href="/" class="btn-custom btn-back">← 返回首頁入口</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
