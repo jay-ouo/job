@@ -20,3 +20,5 @@ def resume():
 @app.route('/future')
 def future():
     return render_template('future.html')
+if __name__ == "__main__":
+    app.run(debug=True)
