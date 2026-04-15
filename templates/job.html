@@ -7,65 +7,54 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            /* 🚀 微調：稍微加深背景遮罩（0.9 -> 0.85），讓內容在沒有大白框的情況下更清晰 */
-            background-image: linear-gradient(rgba(241, 245, 249, 0.85), rgba(241, 245, 249, 0.85)), 
+            /* 🚀 使用全螢幕大樓背景，並加上淡色遮罩提升文字清晰度 */
+            background-image: linear-gradient(rgba(241, 245, 249, 0.88), rgba(241, 245, 249, 0.88)), 
                               url('static/gss_building.png'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             font-family: "Microsoft JhengHei", sans-serif;
-            padding-top: 100px;
+            padding-top: 100px; /* 預留給固定導覽列的空間 */
             color: #334155 !important;
             font-size: 1.1rem;
-            position: relative;
             min-height: 100vh;
         }
 
-        /* --- 浮水印照片設定 --- */
-        body::after {
-            content: "";
-            background-image: url('static/gss_building.png'); 
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: right bottom; 
-            opacity: 0.22; /* 依照剛才的建議加深了浮水印 */
-            top: 0; left: 0; bottom: 0; right: 0;
-            position: fixed;
-            z-index: -1;
-            pointer-events: none;
-        }
+        /* 已移除 body::after，避免右下角出現重複的大樓浮水印 */
 
-        .navbar-custom { background-color: #212529; padding: 15px 25px; }
+        .navbar-custom { 
+            background-color: #212529; 
+            padding: 15px 25px; 
+        }
         .navbar-custom .navbar-brand { color: #ffffff !important; font-weight: bold; font-size: 1.4rem; }
         .navbar-custom .nav-link { color: #d1d5db !important; margin-left: 20px; font-size: 1.05rem; }
 
-        /* 🚀 修改重點：移除外圍大框的視覺特徵 */
         .main-container {
-            background: transparent; /* 移除白色背景 */
-            border-radius: 0;        /* 移除圓角 */
-            box-shadow: none;        /* 移除陰影 */
-            padding: 0 20px 80px;    /* 調整內距 */
-            max-width: 1400px;
+            background: transparent; 
+            padding: 0 20px 80px; 
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
+        /* 🚀 頂部 Banner 容器 */
         .hero-banner-container {
             width: 100%;
             height: 350px; 
             margin-bottom: 35px;
             position: relative;
-            border-radius: 30px; /* 增加圓角讓它更好看 */
+            border-radius: 30px; 
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 給 Banner 一點陰影代替大框 */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
         }
 
+        /* 🚀 填入你指定的 Gemini 生成毛玻璃圖片 */
         .hero-banner-img-full {
             width: 100%;
             height: 100%;
-            background-image: url('static/gss_glass_logo.jpg'); 
+            background-image: url('static/Gemini_Generated_Image_85myx585myx585my.jpg'); 
             background-size: cover;
             background-position: center;
             display: block;
@@ -84,9 +73,8 @@
             box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
         }
 
-        /* 保留內部的區塊框感 */
         .job-description-box {
-            background-color: rgba(241, 245, 249, 0.9); /* 稍微增加透明質感 */
+            background-color: rgba(255, 255, 255, 0.7); /* 半透明質感 */
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 45px;
@@ -94,11 +82,10 @@
             display: inline-block;
             text-align: left;
             width: 100%;
-            max-width: 1000px;
         }
 
         .info-card {
-            background: rgba(248, 250, 252, 0.95); /* 讓內部小卡維持白色框感 */
+            background: rgba(255, 255, 255, 0.9); 
             border-radius: 24px;
             padding: 30px;
             height: 100%;
@@ -106,7 +93,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
 
-        /* 標題與其他樣式維持不變... */
         .section-title {
             color: #0284c7 !important;
             border-left: 6px solid #38bdf8;
@@ -115,14 +101,22 @@
             font-weight: bold;
             font-size: 1.25rem;
         }
+
         .award-list { font-size: 1rem; padding-left: 0; list-style: none; }
         .award-list li { margin-bottom: 10px; padding-left: 25px; position: relative; }
         .award-list li::before { content: "🏆"; position: absolute; left: 0; }
+
         .req-label { font-weight: bold; color: #0369a1; display: block; margin-top: 15px; }
+
         .btn-visit {
-            background-color: #0f172a; color: #fff !important; border-radius: 50px;
-            padding: 16px 45px; text-decoration: none; font-weight: bold; 
-            transition: 0.3s; display: inline-block;
+            background-color: #0f172a; 
+            color: #fff !important; 
+            border-radius: 50px;
+            padding: 16px 45px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            display: inline-block;
         }
         .btn-visit:hover { background-color: #38bdf8; transform: translateY(-2px); }
     </style>
@@ -139,7 +133,7 @@
     </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container">
     <div class="main-container text-center">
         
         <div class="hero-banner-container">
@@ -169,10 +163,10 @@
                     <p>叡揚資訊 (GSS) 成立於 1987 年，是台灣本土軟體業領導廠商。服務涵蓋政府、金融及大型醫療體系。</p>
                     <h5 class="section-title mt-4">🛠️ 核心業務與服務</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-3">● <strong>企業 e 化：</strong> HCM、公文系統、Vital CRM。</li>
-                        <li class="mb-3">● <strong>雲端 SaaS：</strong> Vital 家族與 Vital NetZero 零碳雲。</li>
-                        <li class="mb-3">● <strong>AI 應用：</strong> iota C.ai 對話式平台與智慧助理。</li>
-                        <li>● <strong>資安維運：</strong> DevSecOps 整合工具與資安治理。</li>
+                        <li class="mb-2">● <strong>企業 e 化：</strong> HCM、公文系統</li>
+                        <li class="mb-2">● <strong>雲端 SaaS：</strong> Vital 家族系列</li>
+                        <li class="mb-2">● <strong>AI 應用：</strong> 對話式平台與助理</li>
+                        <li>● <strong>資安維運：</strong> DevSecOps 整合工具</li>
                     </ul>
                 </div>
             </div>
@@ -181,13 +175,9 @@
                 <div class="info-card" style="background-color: rgba(255, 250, 240, 0.95);">
                     <h5 class="section-title">🏅 卓越成就與獲獎</h5>
                     <ul class="award-list">
-                        <li>Checkmarx FY25 Best Overall Performing Reseller</li>
                         <li>2026 CIO Taiwan Elite Vendor</li>
-                        <li>2025 天下永續公民獎（小巨人組）</li>
-                        <li>2024 全球頂尖敏捷 CEO 大獎</li>
-                        <li>2024 金恆獎銀獎</li>
-                        <li>第 32 屆台灣精品獎（知識協作平台）</li>
-                        <li>第 31 屆台灣精品獎（Vital CRM）</li>
+                        <li>2025 天下永續公民獎</li>
+                        <li>第 32 屆台灣精品獎</li>
                         <li>第 24 屆國家品質獎</li>
                     </ul>
                 </div>
@@ -198,10 +188,9 @@
                     <h5 class="section-title">📋 公司職位要求</h5>
                     <div>
                         <span class="req-label">工作經歷：</span> 不拘，具專案開發經驗佳
-                        <span class="req-label">學歷/科系：</span> 大學以上，資訊管理相關學系
-                        <span class="req-label">擅長工具：</span> Python, Java 或 C#, SQL 資料庫
-                        <span class="req-label">語文條件：</span> 具備基本技術文件閱讀能力
-                        <span class="req-label">工作技能：</span> 需求訪談、流程分析、文件撰寫
+                        <span class="req-label">學歷科系：</span> 大學以上，資訊管理相關
+                        <span class="req-label">擅長工具：</span> Python, Java, SQL
+                        <span class="req-label">工作技能：</span> 需求訪談、流程分析
                     </div>
                 </div>
             </div>
