@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>周英智 - 個人履歷網站</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { 
+            --primary-blue: #38bdf8; 
+            --glass-white: rgba(255, 255, 255, 0.95); 
+        }
+
+        body {
+            background: url('static/1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: "Microsoft JhengHei", sans-serif;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .main-container { 
+            width: 100%;
+            max-width: 1000px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-radius: 30px;
+            overflow: hidden;
+            background: var(--glass-white);
+            backdrop-filter: blur(5px);
+        }
+
+        .carousel-outer {
+            background: rgba(56, 189, 248, 0.05);
+            padding: 40px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1; /* 確保內容在按鈕之下或同層但不會遮擋 */
+        }
+
+        .profile-side { flex: 1; }
+        .info-side { 
+            flex: 1; 
+            padding-left: 50px; 
+            border-left: 2px solid rgba(56, 189, 248, 0.2);
+            font-size: 1.1rem;
+        }
+
+        .profile-img-base {
+            width: 160px; height: 160px; 
+            border-radius: 50%;
+            background-size: cover; background-position: center;
+            border: 5px solid #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+
+        /* 照片路徑 */
+        .profile-img-self { background-image: url('static/S__16769027.jpg'); }
+        .profile-img-campus { background-image: url('static/52aa9a7dcf0b72fd435ce6cd526981a1.jpg'); }
+        .profile-img-vision { background-image: url('static/male-programmer-data-analyst-working-260nw-2710680743.webp'); }
+
+        .motto-text { font-size: 2.2rem; font-weight: 900; color: #0f172a; }
+        .sub-tag { font-size: 0.9rem; color: var(--primary-blue); font-weight: 700; letter-spacing: 2px; }
+
+        .detail-outer { padding: 40px 60px; min-height: 380px; }
+        .detail-content { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .detail-content.active { display: block; }
+
+        .section-header { 
+            font-size: 1.8rem; border-left: 6px solid var(--primary-blue); 
+            padding-left: 15px; margin-bottom: 25px; font-weight: 800; color: #0369a1; 
+        }
+        .content-p { line-height: 1.8; color: #334155; font-size: 1.15rem; }
+        
+        .skill-badge {
+            display: inline-block; padding: 5px 12px; border-radius: 6px;
+            background: #e0f2fe; border: 1px solid var(--primary-blue);
+            font-size: 0.9rem; color: #0369a1; font-weight: 600;
+            margin-right: 8px; margin-bottom: 8px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* 🚀 調整箭頭層級，確保不被頭貼擋住 */
+        .carousel-control-prev, .carousel-control-next { 
+            width: 8%; 
+            z-index: 10; 
+        }
+        .carousel-control-prev-icon, .carousel-control-next-icon { 
+            filter: invert(50%); 
+            width: 3rem;
+            height: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="carousel-outer">
+        <div id="resumeCarousel" class="carousel slide" data-bs-interval="false">
+            <div class="carousel-inner">
+                
+                <div class="carousel-item active">
+                    <div class="header-flex">
+                        <div class="profile-side">
+                            <div class="profile-img-base profile-img-self"></div>
+                            <p class="sub-tag">WHO AM I</p>
+                            <h2 class="motto-text">自我介紹</h2>
+                        </div>
+                        <div class="info-side">
+                            <p><strong>個人興趣：</strong></p>
+                            <ul>
+                                <li>🏐 排球 (校內外競賽)</li>
+                                <li>🎬 電影欣賞與評論</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="header-flex">
+                        <div class="profile-side">
+                            <div class="profile-img-base profile-img-campus"></div>
+                            <p class="sub-tag">CAMPUS LIFE</p>
+                            <h2 class="motto-text">大學生活</h2>
+                        </div>
+                        <div class="info-side">
+                            <p><strong>校內經歷：</strong></p>
+                            <ul>
+                                <li>🚩 學生自治會 - 公關部</li>
+                                <li>💼 學成中心 - 工讀生</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="header-flex">
+                        <div class="profile-side">
+                            <div class="profile-img-base profile-img-vision"></div>
+                            <p class="sub-tag">MY VISION</p>
+                            <h2 class="motto-text">未來規劃</h2>
+                        </div>
+                        <div class="info-side">
+                            <p><strong>職涯核心：</strong></p>
+                            <ul>
+                                <li>🚀 系統分析師 (SA)</li>
+                                <li>📈 專案管理實踐</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#resumeCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#resumeCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="detail-outer">
+        <div id="detail-0" class="detail-content active">
+            <h3 class="section-header">資管背景與前端探索</h3>
+            <p class="content-p">
+                我是周英智，就讀於靜宜大學資管系。除了系上必修的資料庫與邏輯課程外，我正投入大量時間學習**網頁前端開發**，包括 HTML5、CSS3 以及現代化的 UI 佈局。我致力於將複雜的後端邏輯轉化為直觀、美觀的使用者界面，實現技術與美感的平衡。
+            </p>
+            <div class="mt-3">
+                <span class="skill-badge">HTML/CSS</span><span class="skill-badge">前端設計</span><span class="skill-badge">Python</span>
+            </div>
+        </div>
+
+        <div id="detail-1" class="detail-content">
+            <h3 class="section-header">多樣化經歷：公關與排球熱情</h3>
+            <p class="content-p">
+                在校期間，我擔任**學生自治會公關**，負責對外聯絡與合作洽談，這大幅提升了我的溝通與應變能力。同時，我也在**學成中心擔任工讀生**，協助行政事務運作。運動方面，我熱衷於排球，曾代表系上參與**大資盃比賽**，在團隊競技中深刻體會到合作與共榮的重要性。
+            </p>
+            <div class="mt-3">
+                <span class="skill-badge">公關溝通</span><span class="skill-badge">行政協作</span><span class="skill-badge">排球競賽</span>
+            </div>
+        </div>
+
+        <div id="detail-2" class="detail-content">
+            <h3 class="section-header">邁向專業 SA 與理想生活</h3>
+            <p class="content-p">
+                短期目標是進入**叡揚資訊 (GSS)** 實習或擔任系統分析師助理，將所學的系統分析知識應用於大型企業專案。我理想的生活是在工作中持續精進技術，同時保有生活品質，下班後能繼續投入排球與電影的愛好。我希望成為一位能在技術森林中優雅前行的資管人。
+            </p>
+            <div class="mt-3">
+                <span class="skill-badge">系統分析</span><span class="skill-badge">專案管理</span><span class="skill-badge">生活平衡</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const carousel = document.getElementById('resumeCarousel');
+    const details = document.querySelectorAll('.detail-content');
+
+    carousel.addEventListener('slid.bs.carousel', function (event) {
+        const index = event.to;
+        details.forEach((detail, i) => {
+            detail.classList.toggle('active', i === index);
+        });
+    });
+</script>
+
+</body>
+</html>
