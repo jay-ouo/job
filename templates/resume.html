@@ -9,7 +9,7 @@
         :root { 
             --primary-blue: #38bdf8; 
             --glass-white: rgba(255, 255, 255, 0.95); 
-            --nav-bg: #1e293b;
+            --nav-bg: #212529; /* 統一為 Job 頁面深色 */
         }
 
         body {
@@ -17,88 +17,113 @@
             background-size: cover;
             font-family: "Microsoft JhengHei", sans-serif;
             margin: 0; padding: 0; min-height: 100vh;
+            padding-top: 100px; /* 與 Job 頁面一致的頂部間距 */
         }
 
-        /* 🚀 依照截圖同步導覽列樣式 */
+        /* 🚀 導覽列：與 Job 頁面大小完全一致 */
         .navbar-custom {
-            background-color: var(--nav-bg);
-            padding: 10px 20px;
+            background-color: var(--nav-bg) !important;
+            padding: 15px 25px; 
         }
-        .navbar-brand, .nav-link {
-            color: white !important;
-            font-weight: bold;
+        .navbar-brand { 
+            color: #ffffff !important; 
+            font-weight: bold; 
+            font-size: 1.4rem; 
         }
-        .nav-link {
-            margin-left: 20px;
-            font-weight: normal;
-            opacity: 0.9;
+        .nav-link { 
+            color: #d1d5db !important; 
+            margin-left: 20px; 
+            font-size: 1.05rem; 
         }
-        .nav-link:hover { opacity: 1; color: var(--primary-blue) !important; }
+        .nav-link:hover { color: var(--primary-blue) !important; }
 
         .content-wrapper {
-            padding: 120px 20px 60px;
+            padding: 0 20px 80px; 
             display: flex; flex-direction: column; align-items: center;
         }
 
+        /* 🚀 調整寬度與 Job 頁面的 max-width: 1200px 對齊 */
         .main-container { 
-            width: 100%; max-width: 1000px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            border-radius: 30px; overflow: hidden;
-            background: var(--glass-white); backdrop-filter: blur(5px);
+            width: 100%; 
+            max-width: 1200px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-radius: 24px; /* 與 Job 頁面圓角一致 */
+            overflow: hidden;
+            background: var(--glass-white); 
+            backdrop-filter: blur(8px);
+            margin: 0 auto;
         }
 
         .carousel-outer {
             background: rgba(56, 189, 248, 0.05);
-            padding: 40px; border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 50px 40px; 
+            border-bottom: 1px solid rgba(0,0,0,0.1);
             position: relative;
         }
 
         .header-flex {
             display: flex; align-items: center; justify-content: space-between;
-            max-width: 800px; margin: 0 auto;
+            max-width: 900px; margin: 0 auto;
         }
 
         .profile-side { flex: 1; }
         .info-side { 
             flex: 1; padding-left: 50px; 
-            border-left: 2px solid rgba(56, 189, 248, 0.2);
-            font-size: 1.1rem;
+            border-left: 3px solid var(--primary-blue);
+            font-size: 1.15rem;
+            text-align: left;
         }
 
         .profile-img-base {
-            width: 150px; height: 150px; 
+            width: 160px; height: 160px; 
             border-radius: 50%; background-size: cover; background-position: center;
-            border: 5px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            margin: 0 auto 15px; position: relative; z-index: 1;
+            border: 6px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 0 auto 20px;
         }
 
         .profile-img-self { background-image: url('static/S__16769027.jpg'); }
         .profile-img-campus { background-image: url('static/52aa9a7dcf0b72fd435ce6cd526981a1.jpg'); }
         .profile-img-vision { background-image: url('static/male-programmer-data-analyst-working-260nw-2710680743.webp'); }
 
-        .motto-text { font-size: 2.2rem; font-weight: 900; color: #0f172a; text-align: center; }
-        .sub-tag { font-size: 0.9rem; color: var(--primary-blue); font-weight: 700; letter-spacing: 2px; text-align: center; }
+        .motto-text { font-size: 2.5rem; font-weight: 900; color: #0f172a; text-align: center; }
+        .sub-tag { font-size: 1rem; color: var(--primary-blue); font-weight: 700; letter-spacing: 2px; text-align: center; }
 
-        .detail-outer { padding: 40px 60px; min-height: 350px; }
-        .detail-content { display: none; animation: fadeIn 0.5s ease-in; }
+        /* 🚀 下方內容區塊間距調整 */
+        .detail-outer { padding: 50px 80px; min-height: 380px; text-align: left; }
+        .detail-content { display: none; animation: fadeIn 0.6s ease-out; }
         .detail-content.active { display: block; }
 
         .section-header { 
             font-size: 1.8rem; border-left: 6px solid var(--primary-blue); 
-            padding-left: 15px; margin-bottom: 25px; font-weight: 800; color: #0369a1; 
+            padding-left: 20px; margin-bottom: 30px; font-weight: 800; color: #0284c7; 
         }
         
         .skill-badge {
-            display: inline-block; padding: 5px 12px; border-radius: 6px;
-            background: #e0f2fe; border: 1px solid var(--primary-blue);
-            font-size: 0.9rem; color: #0369a1; font-weight: 600;
-            margin: 0 8px 8px 0;
+            display: inline-block; padding: 6px 15px; border-radius: 8px;
+            background: #f0f9ff; border: 1px solid var(--primary-blue);
+            font-size: 0.95rem; color: #0369a1; font-weight: 600;
+            margin: 0 10px 10px 0;
         }
 
-        .carousel-control-prev, .carousel-control-next { width: 12%; z-index: 100; }
-        .carousel-control-prev-icon, .carousel-control-next-icon { filter: invert(30%); width: 2.5rem; height: 2.5rem; }
+        .carousel-control-prev-icon, .carousel-control-next-icon { 
+            filter: invert(30%); width: 3rem; height: 3rem; 
+        }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .btn-visit-style {
+            background-color: #0f172a; 
+            color: #fff !important; 
+            border-radius: 50px;
+            padding: 16px 45px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: none;
+        }
+        .btn-visit-style:hover { background-color: var(--primary-blue); transform: translateY(-2px); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -170,24 +195,24 @@
         <div class="detail-outer">
             <div id="detail-0" class="detail-content active">
                 <h3 class="section-header">資管背景與個人特質</h3>
-                <p>我是周英智，就讀於靜宜大學資管系。除了系上必修的資料庫與邏輯課程外，我正投入大量時間學習**網頁前端開發**，包括 HTML5、CSS3 以及現代化的 UI 佈局。我致力於將複雜的後端邏輯轉化為直觀、美觀的使用者界面，實現技術與美感的平衡。</p>
-                <div class="mt-3"><span class="skill-badge">問題解決</span><span class="skill-badge">邏輯分析</span><span class="skill-badge">資訊管理</span></div>
+                <p class="fs-5">我是周英智，就讀於靜宜大學資管系。除了系上必修的資料庫與邏輯課程外，我正投入大量時間學習**網頁前端開發**，包括 HTML5、CSS3 以及現代化的 UI 佈局。我致力於將複雜的後端邏輯轉化為直觀、美觀的使用者界面，實現技術與美感的平衡。</p>
+                <div class="mt-4"><span class="skill-badge">問題解決</span><span class="skill-badge">邏輯分析</span><span class="skill-badge">資訊管理</span></div>
             </div>
             <div id="detail-1" class="detail-content">
                 <h3 class="section-header">多樣化經歷：公關與排球熱情</h3>
-                <p>在校期間，我擔任**學生自治會公關**，負責對外聯絡與合作洽談，這大幅提升了我的溝通與應變能力。同時，我也在**學成中心擔任工讀生**，協助行政事務運作。運動方面，我熱衷於排球，曾代表系上參與**大資盃比賽**，在團隊競技中深刻體會到合作與共榮的重要性。</p>
-                <div class="mt-3"><span class="skill-badge">公關溝通</span><span class="skill-badge">行政協作</span><span class="skill-badge">團隊合作</span></div>
+                <p class="fs-5">在校期間，我擔任**學生自治會公關**，負責對外聯絡與合作洽談，這大幅提升了我的溝通與應變能力。同時，我也在**學成中心擔任工讀生**，協助行政事務運作。運動方面，我熱衷於排球，曾代表系上參與**大資盃比賽**，在團隊競技中深刻體會到合作與共榮的重要性。</p>
+                <div class="mt-4"><span class="skill-badge">公關溝通</span><span class="skill-badge">行政協作</span><span class="skill-badge">團隊合作</span></div>
             </div>
             <div id="detail-2" class="detail-content">
                 <h3 class="section-header">邁向專業 SA 與理想生活</h3>
-                <p>未來目標是進入**叡揚資訊 (GSS)** 實習或擔任系統分析師助理，將所學的系統分析知識應用於大型企業專案。我理想的生活是在工作中持續精進技術，同時保有生活品質，下班後能繼續投入排球與電影的愛好。我希望成為一位能在技術森林中優雅前行的資管人。</p>
-                <div class="mt-3"><span class="skill-badge">系統規劃</span><span class="skill-badge">實習目標</span><span class="skill-badge">核心競爭力</span></div>
+                <p class="fs-5">未來目標是進入**叡揚資訊 (GSS)** 實習或擔任系統分析師助理，將所學的系統分析知識應用於大型企業專案。我理想的生活是在工作中持續精進技術，同時保有生活品質，下班後能繼續投入排球與電影的愛好。我希望成為一位能在技術森林中優雅前行的資管人。</p>
+                <div class="mt-4"><span class="skill-badge">系統規劃</span><span class="skill-badge">實習目標</span><span class="skill-badge">核心競爭力</span></div>
             </div>
         </div>
     </div>
 
     <div class="text-center mt-5">
-        <a href="/" class="btn btn-lg btn-outline-info rounded-pill px-5 py-3 fw-bold">← 返回入口首頁</a>
+        <a href="/" class="btn-visit-style" style="background-color: #64748b;">← 返回入口首頁</a>
     </div>
 </div>
 

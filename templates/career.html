@@ -6,154 +6,211 @@
     <title>職涯深度診斷報告 - 周英智</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* 強制全局背景與最高文字亮度 */
         body {
-            background-color: #0f172a !important; /* 深藍背景 */
+            /* 🚀 使用相同的背景遮罩與圖片邏輯 */
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.85)), 
+                              url('static/messageImage_1776260326759.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             font-family: "Microsoft JhengHei", sans-serif;
-            line-height: 1.8;
-            color: #ffffff !important;
+            padding-top: 100px;
+            color: #334155 !important;
+            min-height: 100vh;
         }
 
-        /* 修正文字變黑問題：強制所有標籤文字變白 */
-        p, span, li, h1, h2, h4, h5, div {
-            color: #ffffff !important;
+        /* 🚀 導覽列：對標 GSS 樣式 */
+        .navbar-custom { 
+            background-color: #212529; 
+            padding: 15px 25px; 
+        }
+        .navbar-custom .navbar-brand { color: #ffffff !important; font-weight: bold; font-size: 1.4rem; }
+        .navbar-custom .nav-link { color: #d1d5db !important; margin-left: 20px; font-size: 1.05rem; }
+
+        .main-container {
+            background: transparent; 
+            padding: 0 20px 80px; 
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
         }
 
-        .glass-container {
-            background: rgba(30, 41, 59, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        /* 🚀 標題標籤：對標 job-badge-container */
+        .job-badge-container {
+            background-color: #38bdf8;
+            color: #fff !important;
+            padding: 15px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin: 0 auto 30px;
+            max-width: 850px;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* 🚀 診斷解讀區：對標 job-description-box */
+        .job-description-box {
+            position: relative;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                              url('static/messageImage_1776260326759.jpg'); 
+            background-size: cover;
+            background-position: center;
             border-radius: 24px;
             padding: 45px;
-            margin: 40px auto;
-            max-width: 1050px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            margin-bottom: 45px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            color: #ffffff !important;
+        }
+
+        .job-description-box h6 {
+            color: #38bdf8 !important;
+            font-weight: bold; 
+            font-size: 1.4rem; 
+            border-bottom: 2px solid rgba(56, 189, 248, 0.5); 
+            padding-bottom: 12px; 
+            margin-bottom: 25px;
+        }
+
+        /* 🚀 特質卡片：對標 info-card */
+        .info-card {
+            background: rgba(255, 255, 255, 0.94); 
+            border-radius: 24px;
+            padding: 30px;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            backdrop-filter: blur(8px);
+            text-align: left;
         }
 
         .section-title {
-            color: #38bdf8 !important; /* 亮天藍色 */
-            font-weight: 800;
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-        }
-
-        .highlight-card {
-            background: rgba(255, 255, 255, 0.08);
+            color: #0284c7 !important;
             border-left: 6px solid #38bdf8;
-            padding: 25px;
-            border-radius: 0 15px 15px 0;
+            padding-left: 15px;
             margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 1.25rem;
         }
 
         .pill-label {
             display: inline-block;
-            padding: 10px 45px;
+            padding: 5px 20px;
             border-radius: 50px;
             font-weight: 900;
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            /* 標籤內文字顏色設為深藍以增加閱讀性 */
-            color: #1a237e !important; 
+            color: #ffffff !important;
+            margin-bottom: 15px;
         }
+
+        /* 🚀 按鈕：對標 btn-visit */
+        .btn-visit {
+            background-color: #0f172a; 
+            color: #fff !important; 
+            border-radius: 50px;
+            padding: 16px 45px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            margin: 10px;
+        }
+        .btn-visit:hover { background-color: #38bdf8; transform: translateY(-2px); }
+
+        .btn-back {
+            background-color: #64748b;
+            color: #fff !important;
+        }
+        .btn-back:hover { background-color: #475569; }
 
         .score-img {
             max-width: 100%;
-            border: 4px solid #334155;
             border-radius: 15px;
-            background-color: #ffffff;
-            filter: brightness(1.05) contrast(1.1);
+            margin-top: 15px;
         }
 
-        .trait-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
+        /* 強制卡片內文字為深色以便閱讀 */
+        .info-card p, .info-card li, .info-card h5 {
+            color: #334155 !important;
         }
-
-        .text-info { color: #7dd3fc !important; }
     </style>
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">YingZhi 個人網站</a>
+        <div class="ms-auto d-flex">
+            <a class="nav-link" href="https://www.pu.edu.tw/" target="_blank">靜宜大學</a>
+            <a class="nav-link" href="https://csim.pu.edu.tw/" target="_blank">靜宜大學資管系</a>
+        </div>
+    </div>
+</nav>
+
 <div class="container">
-    <div class="glass-container">
-        <div class="text-center mb-5">
-            <h1 class="display-5 section-title mb-3">▼ 職業興趣診斷報告書 ▼</h1>
-            <p class="fs-5 text-info">UCAN 測驗結果：掌握核心性格，對標未來發展路徑</p>
+    <div class="main-container">
+        
+        <div class="job-badge-container">
+            Holland Code 核心傾向：S · C · E (社會 · 事務 · 企業)
         </div>
 
-        <div class="row justify-content-center text-center mb-5 g-4">
-            <div class="col-md-5">
-                <div class="p-4 rounded-4" style="background: linear-gradient(135deg, #5c6bc0, #3949ab);">
-                    <span class="d-block mb-1 small opacity-75">Holland Code</span>
-                    <span class="h2 fw-bold">S · C · E</span>
+        <div class="job-description-box">
+            <h6>📝 診斷數據深度解讀</h6>
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <p class="mb-3">根據精密數據分析，您的 <strong>共感性 (7分)</strong> 與 <strong>感受性 (6分)</strong> 均高於常人水準。這揭示了您具備卓越的團隊情感聯繫能力與環境覺察力。</p>
+                    <p class="mb-0">搭配 <strong>行動性 (5分)</strong>，顯示您不僅能理解他人需求，更能將這些理解轉化為實際的溝通執行力。</p>
                 </div>
-            </div>
-            <div class="col-md-5">
-                <div class="p-4 rounded-4" style="background: linear-gradient(135deg, #7986cb, #5c6bc0);">
-                    <span class="d-block mb-1 small opacity-75">核心傾向</span>
-                    <span class="h2 fw-bold">社會 · 事務 · 企業</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="row align-items-center mb-5">
-            <div class="col-lg-7 text-center">
-                <h4 class="section-title mb-4"># 12項特性分數雷達分布</h4>
-                <div class="p-3 bg-white rounded-4 shadow-sm">
-                    <img src="https://raw.githubusercontent.com/jay-ouo/job/main/ucan_table.png" class="score-img" alt="12項特性分數表格">
-                </div>
-            </div>
-            <div class="col-lg-5 mt-4 mt-lg-0">
-                <div class="ps-lg-3">
-                    <h4 class="section-title mb-4"># 診斷數據深度解讀</h4>
-                    <div class="highlight-card">
-                        <p class="mb-3">根據精密數據分析，您的 <strong>共感性 (7分)</strong> 與 <strong>感受性 (6分)</strong> 均高於常人水準。這揭示了您具備卓越的團隊情感聯繫能力與環境覺察力。</p>
-                        <p class="mb-0">搭配 <strong>行動性 (5分)</strong>，顯示您不僅能理解他人需求，更能將這些理解轉化為實際的溝通執行力。</p>
-                    </div>
+                <div class="col-md-5 text-center">
+                    <img src="https://raw.githubusercontent.com/jay-ouo/job/main/ucan_table.png" class="score-img bg-white p-2" alt="分數雷達">
                 </div>
             </div>
         </div>
 
-        <hr class="border-secondary my-5" style="opacity: 0.5;">
-
-        <div class="trait-sections">
-            
-            <div class="p-4 rounded-4 trait-box">
-                <div class="pill-label" style="background: #9ccc65;">S 社會型 (Social)</div>
-                <h5 class="mb-3 text-info">「幫助者」特質分析</h5>
-                <p class="fs-5 mb-3">我具備高度的服務熱忱與利他傾向。在群體中，我傾向透過建立「和諧」與「信任」來推動工作進度。</p>
-                <div class="p-3 rounded-3" style="background: rgba(156, 204, 101, 0.1);">
-                    <p class="mb-1"><strong>● 職業優勢：</strong> 擅長處理人際衝突、建立共識與人才培力。</p>
-                    <p class="mb-0"><strong>● 發展場域：</strong> 教育研究、人力資源開發、諮商與社工體系。</p>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="info-card">
+                    <div class="pill-label" style="background: #9ccc65;">S 社會型 (Social)</div>
+                    <h5 class="section-title">「幫助者」特質</h5>
+                    <p>具備高度服務熱忱與利他傾向。傾向透過建立「和諧」與「信任」來推動工作進度。</p>
+                    <hr>
+                    <p><strong>● 職業優勢：</strong> 擅長處理人際衝突、建立共識。</p>
+                    <p><strong>● 發展場域：</strong> 人力資源開發、諮商與社工體系。</p>
                 </div>
             </div>
 
-            <div class="p-4 rounded-4 trait-box">
-                <div class="pill-label" style="background: #4dd0e1;">C 事務型 (Conventional)</div>
-                <h5 class="mb-3 text-info">「組織者」特質分析</h5>
-                <p class="fs-5 mb-3">我展現了對細節的極度專注。我習慣在結構化、規範明確的環境下發揮實力，確保數據精確無誤。</p>
-                <div class="p-3 rounded-3" style="background: rgba(77, 208, 225, 0.1);">
-                    <p class="mb-1"><strong>● 職業優勢：</strong> 具備高度耐性處理龐雜資訊，能將混亂資料系統化。</p>
-                    <p class="mb-0"><strong>● 發展場域：</strong> 系統分析師、資訊管理專員、精算與金融行政。</p>
+            <div class="col-lg-4">
+                <div class="info-card" style="background-color: rgba(240, 249, 255, 0.96);">
+                    <div class="pill-label" style="background: #4dd0e1; color: #1a237e !important;">C 事務型 (Conventional)</div>
+                    <h5 class="section-title">「組織者」特質</h5>
+                    <p>對細節極度專注。習慣在結構化、規範明確的環境下發揮實力，確保數據精確無誤。</p>
+                    <hr>
+                    <p><strong>● 職業優勢：</strong> 具備高度耐性，能將混亂資料系統化。</p>
+                    <p><strong>● 發展場域：</strong> 系統分析師、資訊管理專員。</p>
                 </div>
             </div>
 
-            <div class="p-4 rounded-4 trait-box">
-                <div class="pill-label" style="background: #e91e63; color: white !important;">E 企業型 (Enterprising)</div>
-                <h5 class="mb-3 text-info">「引領者」特質分析</h5>
-                <p class="fs-5 mb-3">我擁有強烈的目標意識與說服魅力。這項特質讓我願意為了成長而承擔必要的風險，帶領團隊共同邁向成功。</p>
-                <div class="p-3 rounded-3" style="background: rgba(233, 30, 99, 0.1);">
-                    <p class="mb-1"><strong>● 職業優勢：</strong> 擁有充沛的精力去推廣計畫，擅長決策與策略策劃。</p>
-                    <p class="mb-0"><strong>● 發展場域：</strong> 專案經理 (PM)、市場行銷主管、新創事業創辦人。</p>
+            <div class="col-lg-4">
+                <div class="info-card">
+                    <div class="pill-label" style="background: #e91e63;">E 企業型 (Enterprising)</div>
+                    <h5 class="section-title">「引領者」特質</h5>
+                    <p>強烈目標意識與說服魅力。願意為了成長承擔風險，帶領團隊邁向成功。</p>
+                    <hr>
+                    <p><strong>● 職業優勢：</strong> 擅長決策與策略策劃。</p>
+                    <p><strong>● 發展場域：</strong> 專案經理 (PM)、市場行銷主管。</p>
                 </div>
             </div>
-
         </div>
 
-        <div class="text-center mt-5 pt-3">
-            <a href="/" class="btn btn-lg btn-outline-info rounded-pill px-5 py-3 fw-bold">← 返回入口首頁</a>
+        <div class="mt-5 text-center">
+            <a href="/" class="btn-visit btn-back">⬅️ 返回入口首頁</a>
+            <a href="https://ucan.moe.edu.tw/" target="_blank" class="btn-visit">前往 UCAN 平台</a>
         </div>
+
     </div>
 </div>
 
